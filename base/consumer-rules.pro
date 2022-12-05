@@ -1,0 +1,1 @@
+-keepclassmembers class com.esatan.base.model.data.* { *; }
