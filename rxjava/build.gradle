@@ -1,0 +1,50 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'org.jetbrains.kotlin.kapt'
+    id 'kotlin-parcelize'
+}
+
+android {
+    namespace 'com.esatan.rxjava'
+    compileSdk compile_sdk_version as int
+
+    defaultConfig {
+        minSdk min_sdk_version as int
+        targetSdk target_sdk_version as int
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    api project(":base")
+
+    api "io.reactivex.rxjava3:rxjava:$rxjava3"
+    api "io.reactivex.rxjava3:rxandroid:$rxjava3_android"
+    api "io.reactivex.rxjava3:rxkotlin:$rxjava3_kotlin"
+
+    api "androidx.paging:paging-rxjava3:$paging"
+
+    api "com.squareup.retrofit2:adapter-rxjava3:$retrofit"
+
+    testImplementation "junit:junit:$junit"
+    androidTestImplementation "androidx.test.ext:junit:$androidx_test_junit"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$androidx_test_espresso"
+}

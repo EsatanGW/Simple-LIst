@@ -1,0 +1,16 @@
+plugins {
+    id 'java-library'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+task assembleShell(type:JavaExec){
+    group = 'build'
+    description ="Run the ShellTool main class with JavaExecTask"
+    classpath = sourceSets.main.runtimeClasspath
+    main = "com.cyc.shelltool.ShellTool"
+    argsString = "ALL"
+}
